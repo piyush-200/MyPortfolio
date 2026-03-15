@@ -1,0 +1,110 @@
+/* Print-specific styles for Resume PDF generation */
+@media print {
+  /* Hide navigation and other UI elements */
+  nav,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset page styles */
+  body {
+    background: white !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Make the resume container full width */
+  .min-h-screen {
+    min-height: auto !important;
+  }
+
+  /* Remove padding from main container */
+  .pt-24,
+  .pb-16 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Optimize colors for print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Convert gradients to solid colors for better print compatibility */
+  .bg-gradient-to-r,
+  .bg-gradient-to-br {
+    background: #1e293b !important;
+  }
+
+  /* Convert transparent backgrounds */
+  .bg-slate-800\/80,
+  .bg-slate-800\/50 {
+    background: #1e293b !important;
+  }
+
+  .bg-slate-900\/80,
+  .bg-slate-900\/50 {
+    background: #0f172a !important;
+  }
+
+  .bg-slate-700\/50 {
+    background: #334155 !important;
+  }
+
+  /* Ensure text is readable */
+  .text-white {
+    color: #000000 !important;
+  }
+
+  .text-gray-300 {
+    color: #1f2937 !important;
+  }
+
+  .text-gray-400 {
+    color: #374151 !important;
+  }
+
+  .text-cyan-400,
+  .text-blue-400,
+  .text-purple-400 {
+    color: #0891b2 !important;
+  }
+
+  /* Page breaks */
+  .page-break {
+    page-break-after: always;
+  }
+
+  /* Avoid breaking inside elements */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  /* Keep sections together when possible */
+  section,
+  .border-b {
+    page-break-inside: avoid;
+  }
+
+  /* Optimize borders for print */
+  .border-slate-700,
+  .border-slate-600 {
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Remove shadows for cleaner print */
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl {
+    box-shadow: none !important;
+  }
+
+  /* Optimize spacing */
+  @page {
+    margin: 1cm;
+    size: A4;
+  }
+}

@@ -1,0 +1,323 @@
+/* AI Portfolio Custom Theme Variables */
+:root {
+  /* Default theme (Purple Dream) */
+  --theme-primary-start: #a855f7;
+  --theme-primary-end: #ec4899;
+  --theme-accent: #a855f7;
+  --theme-text-accent: #d8b4fe;
+  --theme-border: rgba(168, 85, 247, 0.3);
+  --theme-gradient: linear-gradient(to right, #a855f7, #ec4899);
+  --theme-gradient-hover: linear-gradient(to right, #9333ea, #db2777);
+  
+  /* Dynamic background colors that adapt to theme */
+  --theme-bg-subtle: rgba(168, 85, 247, 0.1);
+  --theme-bg-muted: rgba(168, 85, 247, 0.05);
+  --theme-shadow: rgba(168, 85, 247, 0.5);
+  --theme-shadow-sm: rgba(168, 85, 247, 0.3);
+}
+
+/* Global theme utility classes */
+.theme-gradient {
+  background: var(--theme-gradient);
+}
+
+.theme-gradient-hover:hover {
+  background: var(--theme-gradient-hover);
+}
+
+.theme-text {
+  color: var(--theme-text-accent);
+}
+
+.theme-border {
+  border-color: var(--theme-border);
+}
+
+.theme-bg {
+  background-color: var(--theme-bg-subtle);
+}
+
+/* Hover effects */
+.hover-theme:hover {
+  color: var(--theme-text-accent);
+}
+
+.hover-theme-bg:hover {
+  background-color: var(--theme-bg-subtle);
+}
+
+.hover-theme-border:hover {
+  border-color: var(--theme-accent) !important;
+}
+
+/* Focus effects */
+.focus-theme:focus {
+  border-color: var(--theme-accent);
+  outline: none;
+}
+
+/* Shadow effects */
+.shadow-theme {
+  box-shadow: 0 10px 40px rgba(168, 85, 247, 0.5);
+}
+
+.shadow-theme-sm {
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+}
+
+/* Animation */
+@keyframes pulse-theme {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-theme {
+  animation: pulse-theme 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom scrollbar with theme colors */
+.theme-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.theme-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.theme-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--theme-accent);
+  border-radius: 4px;
+}
+
+.theme-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-primary-end);
+}
+
+/* Button styles */
+.btn-theme {
+  background: var(--theme-gradient);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-theme:hover {
+  background: var(--theme-gradient-hover);
+  transform: scale(1.05);
+}
+
+/* Card styles with theme */
+.card-theme {
+  background-color: rgba(30, 41, 59, 0.5);
+  transition: all 0.3s ease;
+}
+
+.card-theme:hover {
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.2);
+}
+
+/* Input styles */
+.input-theme {
+  background-color: rgb(51, 65, 85);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.input-theme:focus {
+  outline: none;
+}
+
+.input-theme::placeholder {
+  color: rgb(156, 163, 175);
+}
+
+/* Badge/Tag styles */
+.badge-theme {
+  background-color: rgba(168, 85, 247, 0.1);
+  color: var(--theme-text-accent);
+}
+
+/* Gradient text */
+.text-gradient-theme {
+  background: var(--theme-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Loading spinner with theme */
+@keyframes spin-theme {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-theme {
+  border: 3px solid rgba(168, 85, 247, 0.2);
+  border-top-color: var(--theme-accent);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin-theme 1s linear infinite;
+}
+
+/* Success/Info messages */
+.success-message {
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: rgb(134, 239, 172);
+}
+
+.error-message {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: rgb(252, 165, 165);
+}
+
+/* Icon color */
+.icon-theme {
+  color: var(--theme-text-accent);
+}
+
+/* Divider */
+.divider-theme {
+  border-color: var(--theme-border);
+}
+
+/* Backdrop */
+.backdrop-theme {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+/* Modal */
+.modal-theme {
+  background-color: rgb(30, 41, 59);
+  border: 1px solid var(--theme-border);
+  border-radius: 1rem;
+}
+
+/* Select dropdown */
+select.input-theme option {
+  background-color: rgb(51, 65, 85);
+  color: white;
+}
+
+/* Link hover */
+.link-theme {
+  color: rgb(209, 213, 219);
+  transition: color 0.3s ease;
+}
+
+.link-theme:hover {
+  color: var(--theme-text-accent);
+}
+
+/* Glow effect */
+.glow-theme {
+  box-shadow: 0 0 20px var(--theme-accent);
+}
+
+/* Pulse glow animation */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--theme-accent);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--theme-accent);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Print Styles for Resume */
+@media print {
+  /* Hide navigation and other UI elements when printing */
+  nav, .no-print {
+    display: none !important;
+  }
+
+  /* Adjust page margins for printing */
+  @page {
+    margin: 0.5in;
+    size: letter;
+  }
+
+  /* Make the resume look good on printed page */
+  body {
+    background: white !important;
+  }
+
+  /* Ensure the resume card takes full width when printing */
+  .print\:w-full {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Remove rounded corners and shadows for print */
+  .print\:rounded-none {
+    border-radius: 0 !important;
+  }
+
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+
+  /* Adjust colors for print */
+  .bg-gradient-to-br,
+  .bg-gradient-to-r,
+  .bg-slate-800\/80,
+  .bg-slate-900\/80,
+  .bg-slate-800\/50 {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Make text black for print */
+  .text-white,
+  .text-gray-300,
+  .text-gray-400 {
+    color: black !important;
+  }
+
+  /* Adjust borders for print */
+  .border-slate-700,
+  .border-slate-600 {
+    border-color: #e5e7eb !important;
+  }
+
+  /* Hide action buttons */
+  button {
+    display: none !important;
+  }
+
+  /* Remove page breaks inside elements */
+  .print\:break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Ensure sections don't break awkwardly */
+  section,
+  .space-y-6 > div,
+  .space-y-5 > div,
+  .space-y-4 > div {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Remove padding/margin adjustments */
+  .pt-24 {
+    padding-top: 0 !important;
+  }
+}

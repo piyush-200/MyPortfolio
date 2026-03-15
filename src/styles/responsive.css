@@ -1,0 +1,183 @@
+/* Mobile-specific fixes and optimizations */
+
+/* Ensure modals and popups don't overflow on mobile */
+@media (max-width: 640px) {
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Ensure buttons and interactive elements stay within bounds */
+  button, a {
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+
+  /* Improve touch targets for mobile */
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+
+  /* Reduce padding in containers on very small screens */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Make text more readable on mobile */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Fix modal positioning */
+  [role="dialog"], .modal {
+    max-width: calc(100vw - 1.5rem);
+    max-height: calc(100vh - 1.5rem);
+  }
+
+  /* Prevent content from being hidden under fixed elements */
+  main {
+    padding-bottom: 4rem;
+  }
+}
+
+/* Improve scrolling behavior */
+@media (max-width: 768px) {
+  /* Smooth scroll for better UX */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent zoom on input focus in iOS */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="url"],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  /* Better spacing for mobile cards */
+  .card, .project-card, .skill-card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Light mode specific improvements */
+:root:not(.dark) {
+  /* Better contrast for light mode text */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  
+  /* Light mode backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+}
+
+/* Ensure proper visibility in light mode */
+:root:not(.dark) .bg-slate-800,
+:root:not(.dark) .bg-slate-900 {
+  background-color: var(--bg-secondary) !important;
+}
+
+:root:not(.dark) .text-white {
+  color: var(--text-primary) !important;
+}
+
+/* Mobile navigation fixes */
+@media (max-width: 768px) {
+  nav {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Ensure mobile menu doesn't cause layout shift */
+  .mobile-menu {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+}
+
+/* Responsive images and media */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure proper spacing on mobile forms */
+@media (max-width: 640px) {
+  form {
+    width: 100%;
+  }
+
+  form input,
+  form textarea,
+  form select {
+    width: 100%;
+  }
+
+  form button[type="submit"] {
+    width: 100%;
+  }
+}
+
+/* Improve button visibility on mobile in both modes */
+@media (max-width: 640px) {
+  button {
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Ensure buttons don't overflow container */
+  .button-group,
+  .flex.gap-2,
+  .flex.gap-3 {
+    flex-wrap: wrap;
+  }
+}
+
+/* Fix admin controls on mobile */
+@media (max-width: 640px) {
+  .fixed.top-20.right-4 {
+    right: 0.5rem;
+  }
+}
+
+/* Improve card layouts on mobile */
+@media (max-width: 640px) {
+  .grid.grid-cols-2,
+  .grid.grid-cols-3,
+  .grid.grid-cols-4 {
+    gap: 0.75rem;
+  }
+}
+
+/* Better light mode card styles */
+:root:not(.dark) .border-slate-700,
+:root:not(.dark) .border-slate-800 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Improve readability in light mode */
+:root:not(.dark) .text-gray-400 {
+  color: #64748b !important;
+}
+
+:root:not(.dark) .text-gray-300 {
+  color: #475569 !important;
+}
+
+/* Mobile-friendly modal positioning */
+@media (max-width: 640px) {
+  .fixed.inset-0 {
+    padding: 0.75rem !important;
+  }
+}
