@@ -85,7 +85,7 @@ export default function Hero({ setActivePage }) {
           </defs>
           <text className="text-[11px] font-bold tracking-widest fill-cyan-400">
             <textPath href="#circlePath" startOffset="0%">
-              OPEN TO WORK • OPEN TO WORK • 
+              OPEN TO WORK • OPEN TO WORK • lllllllllllll
             </textPath>
           </text>
         </svg>
