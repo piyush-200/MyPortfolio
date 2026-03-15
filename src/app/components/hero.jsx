@@ -71,7 +71,7 @@ export default function Hero({ setActivePage }) {
           <div className="w-full h-full rounded-full bg-gradient-to-br from-slate-800 to-slate-900 p-1.5 flex items-center justify-center overflow-hidden border-2 border-cyan-400/30">
             {/* Profile Image */}
             <img 
-              src="https://tse3.mm.bing.net/th/id/OIP.cjUjzALkEKobv8G4Evr6GQHaEK?pid=Api&P=0&h=180" 
+              src="https://media.licdn.com/dms/image/v2/D5603AQHR9k0YEzRA1g/profile-displayphoto-scale_200_200/B56ZwpHpS1GUAc-/0/1770216398324?e=1772064000&v=beta&t=0tbPe9zH-Jn8opnz4yxKQJC0CandXJsh8I04Q27xPR8" 
               alt="Profile"
               className="w-full h-full rounded-full object-cover"
             />
@@ -85,7 +85,7 @@ export default function Hero({ setActivePage }) {
           </defs>
           <text className="text-[11px] font-bold tracking-widest fill-cyan-400">
             <textPath href="#circlePath" startOffset="0%">
-              OPEN TO WORK • OPEN TO WORK • lllllllllllll
+              OPEN TO WORK • OPEN TO WORK 
             </textPath>
           </text>
         </svg>
