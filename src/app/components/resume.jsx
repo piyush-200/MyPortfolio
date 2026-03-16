@@ -49,36 +49,21 @@ export default function Resume() {
 
   const fetchResumePdf = async () => {
     try {
+      // Check if resume PDF exists in storage
+      const { data, error } = await supabase.storage
+        .from('resumes')
+        .list('', {
+          limit: 1,
+          search: 'Lakshya_Kumar_Resume.pdf'
+        });
 
-// Check if any resume PDF exists in storage
-const { data, error } = await supabase.storage
-  .from('resumes')
-  .list('', { limit: 1 });
-
-if (error) {
-  console.error('Storage error:', error);
-  return;
-}
-
-// If folder is empty
-if (!data || data.length === 0) {
-  setResumePdfUrl(null);
-  setResumeFileName(null);
-  return;
-}
-
-// If file exists
-const fileName = data[0].name;
-
-const { data: urlData } = supabase.storage
-  .from('resumes')
-  .getPublicUrl(fileName);
-
-setResumePdfUrl(urlData.publicUrl);
-setResumeFileName(fileName);
-      
-       }
-      
+      if (!error && data && data.length > 0) {
+        const { data: urlData } = supabase.storage
+          .from('resumes')
+          .getPublicUrl('Lakshya_Kumar_Resume.pdf');
+        
+        setResumePdfUrl(urlData.publicUrl);
+      }
     } catch (error) {
       console.error('Error fetching resume PDF:', error);
     }
@@ -115,7 +100,7 @@ setResumeFileName(fileName);
       // Upload to Supabase Storage
       const { data, error } = await supabase.storage
         .from('resumes')
-        .upload(file.name, file, {
+        .upload('Lakshya_Kumar_Resume.pdf', file, {
           cacheControl: '3600',
           upsert: true
         });
@@ -127,7 +112,7 @@ setResumeFileName(fileName);
       // Get public URL
       const { data: urlData } = supabase.storage
         .from('resumes')
-        .getPublicUrl(file.name);
+        .getPublicUrl('Lakshya_Kumar_Resume.pdf');
       
       setResumePdfUrl(urlData.publicUrl);
       toast.success('Resume PDF uploaded successfully!');
@@ -155,7 +140,7 @@ setResumeFileName(fileName);
       
       const { error } = await supabase.storage
         .from('resumes')
-        .remove([currentFileName]);
+        .remove(['Lakshya_Kumar_Resume.pdf']);
       
       if (error) {
         throw error;
@@ -206,7 +191,7 @@ setResumeFileName(fileName);
             Resume
           </h1>
           <p className="text-gray-400 text-base max-w-2xl mx-auto mb-6">
-            A comprehensive overview of my professional experience, skills, and achievements in Web development and Artificial intelligence.
+            A comprehensive overview of my professional experience, skills, and achievements in DevOps and Machine Learning.
           </p>
           
           {/* Action Buttons */}
@@ -275,27 +260,27 @@ setResumeFileName(fileName);
           {/* Resume Header Section */}
           <div className="bg-gradient-to-r from-slate-800/50 to-slate-900/50 p-8 md:p-10 border-b border-slate-700">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-2">
-              Piyush Adhikari
+              Lakshya Kumar
             </h2>
             <p className="text-lg md:text-xl font-semibold mb-4" style={{ color: 'var(--theme-text-accent)' }}>
-            Full Stack Developer
+              DevOps Engineer & Machine Learning Engineer
             </p>
             <p className="text-gray-300 mb-6 max-w-4xl leading-relaxed">
-              Passionate Web Developer with expertise in modern web technologies, responsive design, and full-stack application development. Experienced in building scalable, user-friendly web applications and innovative digital solutions across multiple domains, from front-end interfaces to back-end systems.
+              Passionate DevOps and Machine Learning Engineer with expertise in CI/CD pipelines, containerized ML model deployment, and advanced AI applications. Experienced in building scalable systems and innovative solutions across multiple domains, from cloud infrastructure to AI-powered applications.
             </p>
             
             {/* Contact Information */}
             <div className="flex flex-wrap gap-4 md:gap-6 text-sm">
               <div className="flex items-center gap-2 text-gray-300">
                 <Mail className="w-4 h-4" style={{ color: 'var(--theme-text-accent)' }} />
-                <span>piyushadhikari740@gmailcomm</span>
+                <span>lakshakumar2911@gmail.com</span>
               </div>
               <div className="flex items-center gap-2 text-gray-300">
                 <Phone className="w-4 h-4" style={{ color: 'var(--theme-text-accent)' }} />
-                <span>+919997384599</span>
+                <span>+919382857429</span>
               </div>
               <a 
-                href="https://github.com/piyush-200" 
+                href="https://github.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors"
@@ -304,7 +289,7 @@ setResumeFileName(fileName);
                 <span>GitHub</span>
               </a>
               <a 
-                href="https://www.linkedin.com/in/piyush-adhikari-ba869723a/" 
+                href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors"
