@@ -54,13 +54,13 @@ export default function Resume() {
         .from('resumes')
         .list('', {
           limit: 1,
-          search: 'Lakshya_Kumar_Resume.pdf'
+          search: 'Resume.pdf'
         });
 
       if (!error && data && data.length > 0) {
         const { data: urlData } = supabase.storage
           .from('resumes')
-          .getPublicUrl('Lakshya_Kumar_Resume.pdf');
+          .getPublicUrl('Resume.pdf');
         
         setResumePdfUrl(urlData.publicUrl);
       }
@@ -100,7 +100,7 @@ export default function Resume() {
       // Upload to Supabase Storage
       const { data, error } = await supabase.storage
         .from('resumes')
-        .upload('Lakshya_Kumar_Resume.pdf', file, {
+        .upload('Resume.pdf', file, {
           cacheControl: '3600',
           upsert: true
         });
@@ -112,7 +112,7 @@ export default function Resume() {
       // Get public URL
       const { data: urlData } = supabase.storage
         .from('resumes')
-        .getPublicUrl('Lakshya_Kumar_Resume.pdf');
+        .getPublicUrl('Resume.pdf');
       
       setResumePdfUrl(urlData.publicUrl);
       toast.success('Resume PDF uploaded successfully!');
@@ -140,7 +140,7 @@ export default function Resume() {
       
       const { error } = await supabase.storage
         .from('resumes')
-        .remove(['Lakshya_Kumar_Resume.pdf']);
+        .remove(['Resume.pdf']);
       
       if (error) {
         throw error;
