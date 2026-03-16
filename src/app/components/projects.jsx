@@ -234,7 +234,7 @@ export default function Projects({ setActivePage }) {
             Featured Projects
           </h2>
           <p className="text-gray-400 max-w-3xl mx-auto text-base">
-            A showcase of innovative AI, ML, and web development projects that demonstrate
+            A showcase of innovative AI, and web development projects that demonstrate
             my expertise in building scalable, real-world solutions.
           </p>
         </div>
