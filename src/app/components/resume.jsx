@@ -49,24 +49,35 @@ export default function Resume() {
 
   const fetchResumePdf = async () => {
     try {
-      // Check if resume PDF exists in storage
+
 // Check if any resume PDF exists in storage
 const { data, error } = await supabase.storage
   .from('resumes')
-  .list('', {
-    limit: 1
-  });
+  .list('', { limit: 1 });
 
-if (!error && data && data.length > 0) {
-  const fileName = data[0].name;
-
-  const { data: urlData } = supabase.storage
-    .from('resumes')
-    .getPublicUrl(fileName);
-
-  setResumePdfUrl(urlData.publicUrl);
-  setResumeFileName(fileName);
+if (error) {
+  console.error('Storage error:', error);
+  return;
 }
+
+// If folder is empty
+if (!data || data.length === 0) {
+  setResumePdfUrl(null);
+  setResumeFileName(null);
+  return;
+}
+
+// If file exists
+const fileName = data[0].name;
+
+const { data: urlData } = supabase.storage
+  .from('resumes')
+  .getPublicUrl(fileName);
+
+setResumePdfUrl(urlData.publicUrl);
+setResumeFileName(fileName);
+      
+       }
       
     } catch (error) {
       console.error('Error fetching resume PDF:', error);
