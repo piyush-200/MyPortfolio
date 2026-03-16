@@ -127,7 +127,7 @@ export default function Experience() {
             Professional Experience
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            My journey through various roles in DevOps, Machine Learning, and AI Engineering, building scalable solutions and innovative applications
+            My journey through various roles in WEb Development , building scalable solutions and innovative applications
           </p>
         </div>
 
