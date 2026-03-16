@@ -289,7 +289,7 @@ export default function Resume() {
                 <span>GitHub</span>
               </a>
               <a 
-                href="www.linkedin.com/in/piyush-adhikari-ba869723a" 
+                href="https://www.linkedin.com/in/piyush-adhikari-ba869723a/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors"
