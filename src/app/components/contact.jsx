@@ -271,7 +271,7 @@ export default function Contact() {
               <h3 className="text-base sm:text-lg text-white mb-3 sm:mb-4">Connect With Me</h3>
               <div className="flex flex-col gap-2.5 sm:gap-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/piyush-200"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 sm:gap-3 text-gray-300 hover:text-cyan-400 transition-colors text-sm"
@@ -280,7 +280,7 @@ export default function Contact() {
                   <span>GitHub</span>
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/piyush-adhikari-ba869723a/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 sm:gap-3 text-gray-300 hover:text-cyan-400 transition-colors text-sm"
@@ -288,7 +288,7 @@ export default function Contact() {
                   <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>LinkedIn</span>
                 </a>
-                <a
+                {/* <a
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -296,7 +296,7 @@ export default function Contact() {
                 >
                   <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>Twitter</span>
-                </a>
+                </a> */}
               </div>
             </div>
 
