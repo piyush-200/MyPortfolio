@@ -277,6 +277,57 @@ export default function Experience() {
                   </div>
                 </div>
 
+
+
+{/* Certificates Upload */}
+                <div className="mt-4">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Upload Certificates (PDFs only)</label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="file"
+                      accept="application/pdf"
+                      multiple
+                      onChange={(e) => handleCertificateUpload(e, editingId)}
+                      className="hidden"
+                      id="certificate-upload"
+                    />
+                    <label
+                      htmlFor="certificate-upload"
+                      className="px-6 py-3 rounded-lg text-white font-medium transition-all hover:scale-105 flex items-center gap-2"
+                      style={{ background: 'var(--theme-gradient)' }}
+                    >
+                      <Upload className="w-5 h-5 inline mr-2" />
+                      Upload
+                    </label>
+                    {uploadingCerts && (
+                      <span className="text-sm text-gray-400">Uploading...</span>
+                    )}
+                  </div>
+                  {formData.certificates && formData.certificates.length > 0 && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                      {formData.certificates.map((cert, certIndex) => (
+                        <div key={certIndex} className="relative">
+                          <div className="bg-slate-700/50 border border-slate-600/30 rounded-lg p-2 flex items-center gap-2">
+                            <FileText className="w-4 h-4" />
+                            <a href={cert.url} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-300 hover:text-white">
+                              {cert.name}
+                            </a>
+                            {adminMode && (
+                              <button
+                                onClick={() => handleRemoveCertFromForm(certIndex)}
+                                className="absolute top-1 right-1 p-1 text-red-400 hover:bg-red-500/10 rounded"
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                
+
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
