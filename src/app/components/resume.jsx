@@ -54,13 +54,13 @@ export default function Resume() {
         .from('resumes')
         .list('', {
           limit: 1,
-          search: 'Resume.pdf'
+          search: 'Lakshya_Kumar_Resume.pdf'
         });
 
       if (!error && data && data.length > 0) {
         const { data: urlData } = supabase.storage
           .from('resumes')
-          .getPublicUrl('Resume.pdf');
+          .getPublicUrl('Lakshya_Kumar_Resume.pdf');
         
         setResumePdfUrl(urlData.publicUrl);
       }
@@ -100,7 +100,7 @@ export default function Resume() {
       // Upload to Supabase Storage
       const { data, error } = await supabase.storage
         .from('resumes')
-        .upload('Resume.pdf', file, {
+        .upload('Lakshya_Kumar_Resume.pdf', file, {
           cacheControl: '3600',
           upsert: true
         });
@@ -112,7 +112,7 @@ export default function Resume() {
       // Get public URL
       const { data: urlData } = supabase.storage
         .from('resumes')
-        .getPublicUrl('Resume.pdf');
+        .getPublicUrl('Lakshya_Kumar_Resume.pdf');
       
       setResumePdfUrl(urlData.publicUrl);
       toast.success('Resume PDF uploaded successfully!');
@@ -124,7 +124,29 @@ export default function Resume() {
       
     } catch (error) {
       console.error('Error uploading PDF:', error);
-      toast.error('Failed to upload PDF. Please try again.');
+      
+      // Check for specific error types
+      if (error.message?.includes('Bucket not found')) {
+        toast.error(
+          <div className="space-y-2">
+            <p className="font-semibold">Storage bucket not found!</p>
+            <p className="text-sm">Create bucket 'resumes' in Supabase Storage</p>
+            <p className="text-xs">Then run SQL in /RESUME_STORAGE_SETUP.sql</p>
+          </div>,
+          { duration: 10000 }
+        );
+      } else if (error.message?.includes('row-level security') || error.message?.includes('policy')) {
+        toast.error(
+          <div className="space-y-2">
+            <p className="font-semibold">Permission denied!</p>
+            <p className="text-sm">Storage policies need to be configured.</p>
+            <p className="text-xs">Run the SQL in /RESUME_STORAGE_SETUP.sql</p>
+          </div>,
+          { duration: 10000 }
+        );
+      } else {
+        toast.error('Failed to upload PDF: ' + (error.message || 'Unknown error'));
+      }
     } finally {
       setUploadingPdf(false);
     }
@@ -140,7 +162,7 @@ export default function Resume() {
       
       const { error } = await supabase.storage
         .from('resumes')
-        .remove(['Resume.pdf']);
+        .remove(['Lakshya_Kumar_Resume.pdf']);
       
       if (error) {
         throw error;
@@ -191,7 +213,7 @@ export default function Resume() {
             Resume
           </h1>
           <p className="text-gray-400 text-base max-w-2xl mx-auto mb-6">
-            A comprehensive overview of my professional experience, skills, and achievements in Web Development & AI.
+            A comprehensive overview of my professional experience, skills, and achievements in DevOps and Machine Learning.
           </p>
           
           {/* Action Buttons */}
@@ -260,27 +282,27 @@ export default function Resume() {
           {/* Resume Header Section */}
           <div className="bg-gradient-to-r from-slate-800/50 to-slate-900/50 p-8 md:p-10 border-b border-slate-700">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-2">
-              Piyush Adhikari
+              Lakshya Kumar
             </h2>
             <p className="text-lg md:text-xl font-semibold mb-4" style={{ color: 'var(--theme-text-accent)' }}>
-              Full Stack Web Developer
+              DevOps Engineer & Machine Learning Engineer
             </p>
             <p className="text-gray-300 mb-6 max-w-4xl leading-relaxed">
-            Passionate Web Developer with expertise in modern web technologies, responsive design, and full-stack development. Experienced in building scalable web applications and innovative digital solutions across multiple domains.
+              Passionate DevOps and Machine Learning Engineer with expertise in CI/CD pipelines, containerized ML model deployment, and advanced AI applications. Experienced in building scalable systems and innovative solutions across multiple domains, from cloud infrastructure to AI-powered applications.
             </p>
             
             {/* Contact Information */}
             <div className="flex flex-wrap gap-4 md:gap-6 text-sm">
               <div className="flex items-center gap-2 text-gray-300">
                 <Mail className="w-4 h-4" style={{ color: 'var(--theme-text-accent)' }} />
-                <span>piyushadhikari740@gmail.com</span>
+                <span>lakshakumar2911@gmail.com</span>
               </div>
               <div className="flex items-center gap-2 text-gray-300">
                 <Phone className="w-4 h-4" style={{ color: 'var(--theme-text-accent)' }} />
-                <span>+919997384599</span>
+                <span>+919382857429</span>
               </div>
               <a 
-                href="https://github.com/piyush-200" 
+                href="https://github.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors"
@@ -289,7 +311,7 @@ export default function Resume() {
                 <span>GitHub</span>
               </a>
               <a 
-                href="https://www.linkedin.com/in/piyush-adhikari-ba869723a/" 
+                href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors"
@@ -326,6 +348,33 @@ export default function Resume() {
                     <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
                       {exp.description}
                     </p>
+
+                    {/* Certificates Section */}
+                    {exp.certificates && exp.certificates.length > 0 && (
+                      <div className="mt-3 pt-3 border-t border-slate-700/50">
+                        <div className="flex items-center gap-2 mb-2">
+                          <FileText className="w-4 h-4 text-cyan-400" />
+                          <h5 className="text-sm font-semibold text-gray-300">
+                            Certificates ({exp.certificates.length})
+                          </h5>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.certificates.map((cert, certIndex) => (
+                            <a
+                              key={certIndex}
+                              href={cert.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-700/40 hover:bg-slate-700/60 border border-slate-600/30 hover:border-cyan-500/30 rounded-lg transition-all text-xs text-gray-300 hover:text-white group"
+                            >
+                              <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                              <span className="truncate max-w-[200px]">{cert.name}</span>
+                              <ExternalLink className="w-3 h-3 text-gray-500 group-hover:text-cyan-400 transition-colors" />
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
