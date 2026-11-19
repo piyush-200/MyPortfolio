@@ -71,7 +71,7 @@ export default function Hero({ setActivePage }) {
           <div className="w-full h-full rounded-full bg-gradient-to-br from-slate-800 to-slate-900 p-1.5 flex items-center justify-center overflow-hidden border-2 border-cyan-400/30">
             {/* Profile Image */}
             <img 
-              src="https://media.licdn.com/dms/image/v2/D5603AQGTPbn8cxFxBQ/profile-displayphoto-scale_400_400/B56Z_DuN2fIcAg-/0/1785695101934?e=1795046400&v=beta&t=9xkhzsxu-62iIknyB0Ggu12kefmw0cBceoGxzy3VMRE" 
+              src="https://media.licdn.com/dms/image/v2/D5603AQGTPbn8cxFxBQ/profile-displayphoto-scale_400_400/B56Z_DuN2fIcAg-/0/1785695101934?e=1796860800&v=beta&t=wwfN-LYan318RDEFAHeg7FcO94sbGEnMHgOsUxMGj3E" 
               alt="Profile"
               className="w-full h-full rounded-full object-cover"
             />
